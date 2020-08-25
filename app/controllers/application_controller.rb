@@ -7,8 +7,10 @@ configure do
   set :views, 'app/views'
 end
 
-# get '/' do
-# end
+get '/' do
+  @articles = Article.all
+  erb :'index.html'
+end
 
 get '/articles' do
   @articles = Article.all
@@ -55,7 +57,7 @@ patch '/articles/:id' do
 end
 
 #DELETE of CRUD
-delete '/articles/:id/delete' do
+delete '/articles/:id' do
   @article = Article.find(params[:id])
   @article.delete
   redirect "/articles"
