@@ -12,7 +12,7 @@ end
 
 get '/articles' do
   @articles = Article.all
-  erb :index.html.erb
+  erb :'index.html'
 end
 
 #create of CRUD
@@ -27,11 +27,11 @@ post '/articles' do
   redirect "/articles/#{article.id}" 
 end
 
-# Read of CRUD
-get '/articles' do
-  @articles = Article.all
-  erb :'index.html'
-end
+# # Read of CRUD
+# get '/articles' do
+#   @articles = Article.all
+#   erb :'index.html'
+# end
 
 # READ of CRUD
 get '/articles/:id' do
@@ -46,16 +46,16 @@ get '/articles/:id/edit' do
 end
 
 #Update of CRUD
-patch '/articles/:id/edit' do
-  @article = Article.find(params[:id])
-  @article.update(params)
-  redirect "/meals/#{@meal.id}"
+patch '/articles/:id' do
+  @article = Article.find_by_id(params[:id])
+  @article.update
+  redirect "/articles/#{@article.id}"
 end
 
 #DELETE of CRUD
 delete '/articles/:id' do
   @article = Article.find(params[:id])
   @article.destroy
-  redirect :articles
+  redirect "/articles"
 end
 end
