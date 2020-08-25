@@ -48,14 +48,16 @@ end
 #Update of CRUD
 patch '/articles/:id' do
   @article = Article.find_by_id(params[:id])
-  @article.update
+  @article.title = params[:title]
+  @article.content = params[:content]
+  @article.save
   redirect "/articles/#{@article.id}"
 end
 
 #DELETE of CRUD
-delete '/articles/:id' do
+delete '/articles/:id/delete' do
   @article = Article.find(params[:id])
-  @article.destroy
+  @article.delete
   redirect "/articles"
 end
 end
