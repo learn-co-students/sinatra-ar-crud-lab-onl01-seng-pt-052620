@@ -1,0 +1,11 @@
+<h2><%= @article.title %></h2>
+
+<p><%= @article.content %></p>
+
+<a href="/articles/<%= @article.id %>/edit">
+
+<input type="button" value="Edit" /></a>
+
+<form method="post" >
+
+<input type="hidden" value="delete" name="_method"><input type="submit" value="Delete" /></form>
