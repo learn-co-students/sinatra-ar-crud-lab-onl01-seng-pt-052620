@@ -1,3 +1,7 @@
-<form action="articles/<%= @model.id %>" method="post">
-<input id="hidden" type="hidden" name ="_method" value="patch">
+<%= @article.title %>
+<%= @article.content %>
+<form action="/articles/<%= @article.id %>" method="post">
+<input type="hidden" name="_method" value="delete">
+<input type="submit">
+
 </form>
