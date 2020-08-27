@@ -11,11 +11,11 @@ class ApplicationController < Sinatra::Base
   get '/' do
   end
 
-  get '/article/new' do
+  get '/create_articles/new' do
     erb :new
   end
 
-  post '/article' do
+  post '/articles' do
     Model.create(title: params[:title])
     erb :show
   end
